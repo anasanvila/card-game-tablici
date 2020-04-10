@@ -1,17 +1,17 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-import {AddCards,AddDeckID} from '../redux/action'
+import {AddCards,AddDeckID, SetZone} from '../redux/action'
 import {connect} from 'react-redux'
-import {TableZone, PlayerZone, Desk, CardStyle, CardBlock } from '../styles/mainStyle'
-
-const API_PATH = 'https://deckofcardsapi.com/api/deck/';
-const SHUFFLE_DECK_PATH = 'new/shuffle/';
+import Player from './player'
+import Desk from './desk'
+import {TableZone} from '../styles/mainStyle'
+import {API_PATH, SHUFFLE_DECK_PATH} from '../const/constants'
 
 class Main extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            //round: 0,
+            //round:0,
         };
         this.getDeckId = this.getDeckId.bind(this);
     }
@@ -46,34 +46,19 @@ class Main extends Component {
         this.getDeckId();
     }
 
-    cardView(cards){
-        let cardImages = cards.map(card=><CardStyle><img src={card.image} key={card.code} height="100%"/></CardStyle>)
-        return <CardBlock>{cardImages}</CardBlock>
-    }
-
-    show(value){
-        return value?this.cardView(value):''
-    }
-
     render(){
-        let p1c = this.props.player1cards;
-        let d = this.props.desk;
-        let p2c = this.props.player2cards;
         return (
             <TableZone>
                 <button onClick={ this.drawAllCards } > click </button>
-                <PlayerZone> { this.show(p1c) } </PlayerZone>
-                <Desk> { this.show(d) } </Desk>
-                <PlayerZone> { this.show(p2c) }</PlayerZone>
+                <Player playerNumber={1} key="player1"/>
+                <Desk playerNumber={0}/>
+                <Player playerNumber={2} key="player2"/>
             </TableZone>
         );
     }
 }
 const mapStateToProps = (store) => {
     return {
-        player1cards:store.player1cards,
-        player2cards:store.player2cards,
-        desk:store.desk,
         deckID:store.deckID
     }
 }
@@ -81,7 +66,8 @@ const mapStateToProps = (store) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         addCards: (player, cards) => dispatch(AddCards(player, cards)),
-        addDeckID: (id) => dispatch(AddDeckID(id))
+        addDeckID: (id) => dispatch(AddDeckID(id)),
+        setZone: (zone) => dispatch(SetZone(zone))
     }
 }
 

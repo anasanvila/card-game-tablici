@@ -18,13 +18,10 @@ export const PlayerZone = styled.div`
     width:60vw;
     height:15vh;
 `
-export const Desk = styled.div`
+export const DeskZone = styled.div`
     align-self:center;
     width:50vw;
     height:15vh;
-`
-export const CardStyle = styled.div`
-    height:100%;
 `
 export const CardBlock = styled.div`
     display:flex;

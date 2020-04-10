@@ -13,3 +13,24 @@ export const AddDeckID = (id) => {
     }
 }
 
+export const SelectPlayerCard = (card, player) => {
+    return {
+        type: 'SELECT_PLAYER_CARD',
+        card,
+        player
+    }
+}
+
+export const SetZone = (zone) => {
+    return {
+        type: 'SET_ZONE',
+        zone
+    }
+}
+
+export const AddChosenDeskCard = (card) => {
+    return {
+        type: 'ADD_CHOSEN_DESK_CARD',
+        card
+    }
+}

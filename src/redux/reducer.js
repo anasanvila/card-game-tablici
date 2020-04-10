@@ -12,6 +12,15 @@ const reducer = (store, action) => {
         case 'ADD_DECK_ID' :
             newStore.deckID = action.id;
             break;
+        case 'SELECT_PLAYER_CARD' :
+            newStore.selectedPlayerCard = action.card;
+            break;
+        case 'ADD_CHOSEN_DESK_CARD' :
+            newStore.selectedDeskCards.push(action.card);
+            break;
+        case 'SET_ZONE' :
+            newStore.zone = action.zone;
+            break;
         default: return newStore;
     }
 
