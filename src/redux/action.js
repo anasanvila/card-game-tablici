@@ -57,8 +57,9 @@ export const ReplaceAceInChosenCards = (index) => {
     }
 }
 
-export const AddAceNum = () => {
+export const AddAceNum = (num) => {
     return {
         type: 'ADD_ACE_NUM',
+        num
     }
 }

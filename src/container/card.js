@@ -29,14 +29,13 @@ class Card extends Component {
     }
 
     handleClick1 = () => {
-        console.log("kec je jedan")
-        console.log("selectedDeskCards",this.props.selectedDeskCards)
+        console.log("kec je jedan");
+        this.props.addAceNum(1);
         if (this.props.playerNumber!==this.props.blockedZone) {
             const newMove = !this.state.move;
             this.setState({move: newMove});
         }
         this.props.addAceAsOne(true);
-        this.props.addAceNum();
     }
 
     render(){
@@ -72,7 +71,7 @@ const mapDispatchToProps = (dispatch) => {
     return {
         selectPlayerCard: (card, player) => dispatch(SelectPlayerCard(card,player)),
         addAceAsOne:()=>dispatch(AddAceAsOne(true)),
-        addAceNum:()=>dispatch(AddAceNum())
+        addAceNum:(num)=>dispatch(AddAceNum(num)),
     }
 }
 

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {AddCards,AddDeckID, AddChosenDeskCard} from '../redux/action'
+import {AddCards,AddDeckID, AddChosenDeskCard,ReplaceAceInChosenCards} from '../redux/action'
 import {connect} from 'react-redux'
 import Card from './card'
 import {DeskZone, CardBlock } from '../styles/mainStyle'
@@ -33,8 +33,11 @@ class Desk extends Component {
 
     handleClick = (card) => {
         console.log("card", card);
-        console.log("ace==",this.props.ace);
+        console.log("ace==",this.props.ace)
+        console.log("aceNum=",this.props.aceNum)
+        
         this.props.addChosenDeskCard(card);
+       // if (this.props.aceNum>-1) this.props.replaceAceInChosenCards();
         console.log("deskCards",this.props.selectedDeskCards);
     }
 
@@ -56,7 +59,8 @@ const mapStateToProps = (store) => {
         desk:store.desk,
         blockedZone:store.blockedZone,
         selectedDeskCards:store.selectedDeskCards,
-        ace:store.ace
+        ace:store.ace,
+        aceNum:store.aceNum
     }
 }
 
@@ -65,6 +69,7 @@ const mapDispatchToProps = (dispatch) => {
         addCards: (player, cards) => dispatch(AddCards(player, cards)),
         addDeckID: (id) => dispatch(AddDeckID(id)),
         addChosenDeskCard: (card) => dispatch(AddChosenDeskCard(card)),
+        replaceAceInChosenCards: ()=>dispatch(ReplaceAceInChosenCards())
     }
 }
 

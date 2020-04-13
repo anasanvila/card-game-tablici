@@ -35,7 +35,8 @@ const reducer = (store, action) => {
             break;
         case 'ADD_ACE_NUM':
             console.log("ace num in reducer pre",newStore.aceNum);
-            newStore.aceNum++;
+            console.log("Action num= ",action.num)
+            newStore.aceNum=newStore.aceNum + action.num;
             console.log("ace num in reducer posle",newStore.aceNum);
             break;
         default: return newStore;
