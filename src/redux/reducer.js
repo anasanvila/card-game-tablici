@@ -27,6 +27,17 @@ const reducer = (store, action) => {
         case 'SET_BLOCKED_ZONE' :
             newStore.zone = action.blockedZone;
             break;
+        case 'ADD_ACE_AS_ONE' :
+            newStore.ace = action.ace;
+            break;
+        case 'REPLACE_ACE_IN_CHOSEN_CARDS':
+            newStore.selectedDeskCards[action.index].value="ACE1";
+            break;
+        case 'ADD_ACE_NUM':
+            console.log("ace num in reducer pre",newStore.aceNum);
+            newStore.aceNum++;
+            console.log("ace num in reducer posle",newStore.aceNum);
+            break;
         default: return newStore;
     }
 

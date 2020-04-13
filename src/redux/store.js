@@ -10,6 +10,8 @@ const getInitialState = () => {
      selectedPlayer:0,
      selectedDeskCards:[],
      desk:[],
+     ace:false,
+     aceNum:0,
      deckID: 0,
     }
 }

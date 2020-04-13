@@ -42,3 +42,23 @@ export const AddChosenPlayerCard = (player, card) => {
         card
     }
 }
+
+export const AddAceAsOne = (ace) => {
+    return {
+        type: 'ADD_ACE_AS_ONE',
+        ace
+    }
+}
+
+export const ReplaceAceInChosenCards = (index) => {
+    return {
+        type: 'REPLACE_ACE_IN_CHOSEN_CARDS',
+        index
+    }
+}
+
+export const AddAceNum = () => {
+    return {
+        type: 'ADD_ACE_NUM',
+    }
+}

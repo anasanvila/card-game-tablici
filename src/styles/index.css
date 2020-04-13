@@ -11,3 +11,33 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.box{
+  /* width: 200px; */
+  height: 100%;
+  position: relative;
+  text-align: center;
+}
+
+.box:hover .tip{
+  display: block;
+}
+
+.tip{
+  display: none;
+  height:50%;
+  position: absolute;
+  bottom:40px;
+}
+
+.buttonInside{
+  width:60%;
+  background-color: white;
+  border: 2px solid green;
+  height: 40px;
+  margin:0px;
+}
+
+.buttonInside:hover{
+  background-color:mediumaquamarine;
+}

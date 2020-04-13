@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {AddCards,AddDeckID,AddChosenPlayerCard} from '../redux/action'
+import {AddCards,AddDeckID,AddChosenPlayerCard,ReplaceAceInChosenCards} from '../redux/action'
 import {connect} from 'react-redux'
 import Card from './card'
 import {PlayerZone, CardBlock } from '../styles/mainStyle'
@@ -21,7 +21,13 @@ class Player extends Component {
 
     handleClick = (card) => {
         console.log("player card", card);
+        for (let i=0; i<this.props.aceNum; i++){
+            let index = this.props.selectedDeskCards.findIndex(card=>card.value=="ACE") 
+            console.log("index ace=", index)
+            this.props.replaceAceInChosenCards(index);
+        }
         this.props.addChosenPlayerCard(this.props.playerNumber, card);
+        console.log("at the end selected DeskCards", this.props.selectedDeskCards)
         //isMoveValid(this.props.selectedDeskCards, card);
 
         
@@ -45,7 +51,9 @@ const mapStateToProps = (store) => {
         player1cards:store.player1cards,
         player2cards:store.player2cards,
         selectedDeskCards:store.selectedDeskCards,
-        selectedPlayerCard:store.selectedPlayerCard
+        selectedPlayerCard:store.selectedPlayerCard,
+        ace:store.ace,
+        aceNum:store.aceNum
     }
 }
 
@@ -53,7 +61,8 @@ const mapDispatchToProps = (dispatch) => {
     return {
         addCards: (player, cards) => dispatch(AddCards(player, cards)),
         addDeckID: (id) => dispatch(AddDeckID(id)),
-        addChosenPlayerCard: (player, card) => dispatch(AddChosenPlayerCard(player, card))
+        addChosenPlayerCard: (player, card) => dispatch(AddChosenPlayerCard(player, card)),
+        replaceAceInChosenCards: (index)=>dispatch(ReplaceAceInChosenCards(index))
     }
 }
 
