@@ -23,7 +23,6 @@ class Player extends Component {
         console.log("player card", card);
         for (let i=0; i<this.props.aceNum; i++){
             let index = this.props.selectedDeskCards.findIndex(card=>card.value=="ACE") 
-            console.log("index ace=", index)
             this.props.replaceAceInChosenCards(index);
         }
         this.props.addChosenPlayerCard(this.props.playerNumber, card);
@@ -52,6 +51,7 @@ const mapStateToProps = (store) => {
         player2cards:store.player2cards,
         selectedDeskCards:store.selectedDeskCards,
         selectedPlayerCard:store.selectedPlayerCard,
+        ace:store.ace,
         aceNum:store.aceNum
     }
 }

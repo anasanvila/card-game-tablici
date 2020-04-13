@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {SelectPlayerCard,AddAceNum} from '../redux/action'
+import {SelectPlayerCard,AddAceAsOne,AddAceNum} from '../redux/action'
 import {connect} from 'react-redux'
 import styled from 'styled-components'
 import '../styles/index.css'
@@ -21,6 +21,7 @@ class Card extends Component {
     }
 
     handleClick = () => {
+        console.log("selectedDeskCards",this.props.selectedDeskCards)
         if (this.props.playerNumber!==this.props.blockedZone) {
             const newMove = !this.state.move;
             this.setState({move: newMove});
@@ -30,10 +31,13 @@ class Card extends Component {
     handleClick1 = () => {
         console.log("kec je jedan");
         this.props.addAceNum(1);
+        console.log("selectedDeskCards",this.props.selectedDeskCards)
         if (this.props.playerNumber!==this.props.blockedZone) {
             const newMove = !this.state.move;
             this.setState({move: newMove});
         }
+        this.props.addAceAsOne(true);
+        
     }
 
     render(){
@@ -68,6 +72,7 @@ const mapStateToProps = (store) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         selectPlayerCard: (card, player) => dispatch(SelectPlayerCard(card,player)),
+        addAceAsOne:()=>dispatch(AddAceAsOne(true)),
         addAceNum:(num)=>dispatch(AddAceNum(num)),
     }
 }

@@ -17,11 +17,13 @@ class Desk extends Component {
     cardList(cards){
         let cardImages = cards.map(card=>{
             let ace=false;
+            let aceisOne=false;
             if (card.value==="ACE") ace=true;
             return(<Card 
                 card={card} 
                 key={card.code} 
                 ace={ace}
+                aceisOne={aceisOne}
                 playerNumber={this.props.playerNumber} 
                 onClick={e=>this.handleClick(card)}
             />)}
@@ -35,7 +37,7 @@ class Desk extends Component {
         console.log("aceNum=",this.props.aceNum)
         
         this.props.addChosenDeskCard(card);
-       // if (this.props.aceNum>-1) this.props.replaceAceInChosenCards();
+        
         console.log("deskCards",this.props.selectedDeskCards);
     }
 
@@ -57,6 +59,7 @@ const mapStateToProps = (store) => {
         desk:store.desk,
         blockedZone:store.blockedZone,
         selectedDeskCards:store.selectedDeskCards,
+        ace:store.ace,
         aceNum:store.aceNum
     }
 }
