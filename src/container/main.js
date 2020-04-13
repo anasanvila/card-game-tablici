@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-import {AddCards,AddDeckID, SetZone} from '../redux/action'
+import {AddCards,AddDeckID, SetBlockedZone} from '../redux/action'
 import {connect} from 'react-redux'
 import Player from './player'
 import Desk from './desk'
@@ -11,7 +11,7 @@ class Main extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            //round:0,
+            clicked:false
         };
         this.getDeckId = this.getDeckId.bind(this);
     }
@@ -24,10 +24,12 @@ class Main extends Component {
     }
 
     drawAllCards = () => {
-        for (let i=0;i<3;i++){
-            i===0?this.drawCards(i,4):this.drawCards(i,6);
+        if (!this.state.clicked){
+            for (let i=0;i<3;i++){
+                i===0?this.drawCards(i,4):this.drawCards(i,6);
+            }
         }
-        //this.setState({round:this.state.round+1})
+        this.setState({clicked:true})
     }
 
     drawCards = (playerNumber, num) => {
@@ -67,7 +69,7 @@ const mapDispatchToProps = (dispatch) => {
     return {
         addCards: (player, cards) => dispatch(AddCards(player, cards)),
         addDeckID: (id) => dispatch(AddDeckID(id)),
-        setZone: (zone) => dispatch(SetZone(zone))
+        setBlockedZone: (blockedZone) => dispatch(SetBlockedZone(blockedZone))
     }
 }
 

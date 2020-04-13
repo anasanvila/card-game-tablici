@@ -21,16 +21,24 @@ export const SelectPlayerCard = (card, player) => {
     }
 }
 
-export const SetZone = (zone) => {
+export const SetBlockedZone = (blockedZone) => {
     return {
-        type: 'SET_ZONE',
-        zone
+        type: 'SET_BLOCKED_ZONE',
+        blockedZone
     }
 }
 
 export const AddChosenDeskCard = (card) => {
     return {
         type: 'ADD_CHOSEN_DESK_CARD',
+        card
+    }
+}
+
+export const AddChosenPlayerCard = (player, card) => {
+    return {
+        type: 'ADD_CHOSEN_PLAYER_CARD',
+        player,
         card
     }
 }

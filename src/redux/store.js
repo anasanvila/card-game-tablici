@@ -5,8 +5,9 @@ const getInitialState = () => {
     return {
      player1cards:[],
      player2cards:[],
-     zone: 0,
+     blockedZone: 2,
      selectedPlayerCard:{},
+     selectedPlayer:0,
      selectedDeskCards:[],
      desk:[],
      deckID: 0,

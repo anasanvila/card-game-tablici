@@ -20,7 +20,7 @@ class Card extends Component {
     }
 
     handleClick = () => {
-        if (this.props.playerNumber===this.props.zone) {
+        if (this.props.playerNumber!==this.props.blockedZone) {
             const newMove = !this.state.move;
             this.setState({move: newMove});
         }
@@ -28,8 +28,10 @@ class Card extends Component {
 
     render(){
         //if (this.props.selectedDeskCards!==[]) console.log("selectedDeskCards",this.props.selectedDeskCards)
+        // console.log("playerNumber", this.props.playerNumber,"blockedZone", this.props.blockedZone)
+        if (this.props.ace===true) console.log("ACE");
         return(
-            <CardStyle onClick={this.props.onClick} move={this.state.move}>
+            <CardStyle onClick={this.props.onClick} move={this.state.move&&this.props.playerNumber===0}>
                 <img src={this.props.card.image} onClick={this.handleClick} key={this.props.card.code} height="100%" alt={this.props.card.code}/>
             </CardStyle>
         )
@@ -39,17 +41,14 @@ class Card extends Component {
 
 const mapStateToProps = (store) => {
     return {
-        player1cards:store.player1cards,
-        player2cards:store.player2cards,
-        zone: store.zone,
-        selectedDeskCards:store.selectedDeskCards
+        blockedZone: store.blockedZone,
+        
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
         selectPlayerCard: (card, player) => dispatch(SelectPlayerCard(card,player)),
-        addChosenDeskCard: (card) => dispatch(AddChosenDeskCard(card)),
     }
 }
 

@@ -16,10 +16,16 @@ const reducer = (store, action) => {
             newStore.selectedPlayerCard = action.card;
             break;
         case 'ADD_CHOSEN_DESK_CARD' :
-            newStore.selectedDeskCards.push(action.card);
+            if (newStore.selectedDeskCards.find(c=>c.code===action.card.code))
+                newStore.selectedDeskCards = newStore.selectedDeskCards.filter(c=>c.code!==action.card.code)
+                else newStore.selectedDeskCards.push(action.card)
             break;
-        case 'SET_ZONE' :
-            newStore.zone = action.zone;
+        case 'ADD_CHOSEN_PLAYER_CARD' :
+            newStore.selectedPlayerCard = action.card;
+            newStore.selectedPlayer = action.player;
+            break;
+        case 'SET_BLOCKED_ZONE' :
+            newStore.zone = action.blockedZone;
             break;
         default: return newStore;
     }
