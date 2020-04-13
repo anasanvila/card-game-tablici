@@ -29,7 +29,7 @@ class Player extends Component {
         let Arr = mapped(ArrOfCards);
         let karta = makeObjWithIntValue(card)
         if (Arr.length>0) Arr.push(karta.value);
-        if (Arr) this.props.postaviPokupljeneKarte(Arr,karta)
+        if (Arr) this.props.postaviPokupljeneKarte(Arr,this.props.playerNumber)
         else console.log("nista od karata ne moze da se pokupi")
     }
 

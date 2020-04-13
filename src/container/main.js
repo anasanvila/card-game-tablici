@@ -51,7 +51,7 @@ class Main extends Component {
 
     render(){
         let pk1 = this.props.pokupljeneKartePrvogIgraca || '';
-        let pk2 = this.props.pokupljeneKarteDrugogIgraca||'';
+        let pk2 = this.props.pokupljeneKarteDrugogIgraca ||'';
         return (
             <TableZone>
                 <button onClick={ this.drawAllCards } > click </button>

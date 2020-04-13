@@ -37,7 +37,7 @@ const reducer = (store, action) => {
             newStore.aceNum=newStore.aceNum + action.num;
             break;
         case 'PUT_CARDS':
-            console.log("Niz pokupljenih karata: ",action.array)
+            console.log("Niz pokupljenih karata: ",action.array,"action.player=",action.player)
             if (action.player===1) newStore.pokupljeneKartePrvogIgraca = [ ...action.array]
             if (action.player===2) newStore.pokupljeneKarteDrugogIgraca = [ ...action.array]
             break;

@@ -1,9 +1,9 @@
 import React from 'react';
-import {PokupljeneKarteIgraca} from '../styles/mainStyle'
+import {PokupljeneKarteIgraca,Box} from '../styles/mainStyle'
 
 function PokupljeneKarte (props) {
         let arr = props.karte;
-        let arrOfCards = arr.map((el,index)=><span key={index}>{el}</span>)
+        let arrOfCards = arr.map((el,index)=><Box key={index}>{el}</Box>)
         return(<PokupljeneKarteIgraca>
             {arrOfCards}
         </PokupljeneKarteIgraca>

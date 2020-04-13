@@ -34,3 +34,11 @@ export const PokupljeneKarteIgraca = styled.div`
     height:100px;
     opacity:0.5;
 `
+export const Box = styled.div`
+    background-color:white;
+    width:25px;
+    padding-left:7px;
+    border:1px solid green;
+    color:black;
+    display:inline-block;
+`
