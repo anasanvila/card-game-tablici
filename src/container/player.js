@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {AddCards,AddDeckID,AddChosenPlayerCard,ReplaceAceInChosenCards,PostaviPokupljeneKarte} from '../redux/action'
+import {AddCards,AddDeckID,AddChosenPlayerCard,ReplaceAceInChosenCards,SetPickedUpCards} from '../redux/action'
 import {connect} from 'react-redux'
 import Card from './card'
 import {PlayerZone, CardBlock } from '../styles/mainStyle'
@@ -29,7 +29,7 @@ class Player extends Component {
         let Arr = mapped(ArrOfCards);
         let karta = makeObjWithIntValue(card)
         if (Arr.length>0) Arr.push(karta.value);
-        if (Arr) this.props.postaviPokupljeneKarte(Arr,this.props.playerNumber)
+        if (Arr) this.props.setPickedUpCards(Arr,this.props.playerNumber)
         else console.log("nista od karata ne moze da se pokupi")
     }
 
@@ -63,7 +63,7 @@ const mapDispatchToProps = (dispatch) => {
         addDeckID: (id) => dispatch(AddDeckID(id)),
         addChosenPlayerCard: (player, card) => dispatch(AddChosenPlayerCard(player, card)),
         replaceAceInChosenCards: (index)=>dispatch(ReplaceAceInChosenCards(index)),
-        postaviPokupljeneKarte: (arr,player)=>dispatch(PostaviPokupljeneKarte(arr,player))
+        setPickedUpCards: (arr,player)=>dispatch(SetPickedUpCards(arr,player))
     }
 }
 

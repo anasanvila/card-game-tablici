@@ -4,7 +4,7 @@ import {AddCards,AddDeckID, SetBlockedZone} from '../redux/action'
 import {connect} from 'react-redux'
 import Player from './player'
 import Desk from './desk'
-import PokupljeneKarte from '../components/pokupljeneKarte'
+import PickedUpCards from '../components/pickedUpCards'
 import {TableZone} from '../styles/mainStyle'
 import {API_PATH, SHUFFLE_DECK_PATH} from '../const/constants'
 
@@ -50,16 +50,16 @@ class Main extends Component {
     }
 
     render(){
-        let pk1 = this.props.pokupljeneKartePrvogIgraca || '';
-        let pk2 = this.props.pokupljeneKarteDrugogIgraca ||'';
+        let pk1 = this.props.pickedCardsFirstPlayer || '';
+        let pk2 = this.props.pickedCardsSecondPlayer ||'';
         return (
             <TableZone>
                 <button onClick={ this.drawAllCards } > click </button>
-                <PokupljeneKarte karte={pk1}/>
+                <PickedUpCards karte={pk1}/>
                 <Player playerNumber={1} key="player1"/>
                 <Desk playerNumber={0}/>
                 <Player playerNumber={2} key="player2"/>
-                <PokupljeneKarte karte={pk2}/>
+                <PickedUpCards karte={pk2}/>
             </TableZone>
         );
     }
@@ -67,8 +67,8 @@ class Main extends Component {
 const mapStateToProps = (store) => {
     return {
         deckID:store.deckID,
-        pokupljeneKartePrvogIgraca:store.pokupljeneKartePrvogIgraca,
-        pokupljeneKarteDrugogIgraca:store.pokupljeneKarteDrugogIgraca
+        pickedCardsFirstPlayer:store.pickedCardsFirstPlayer,
+        pickedCardsSecondPlayer:store.pickedCardsSecondPlayer
     }
 }
 

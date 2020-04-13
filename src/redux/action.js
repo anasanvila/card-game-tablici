@@ -64,7 +64,7 @@ export const AddAceNum = (num) => {
     }
 }
 
-export const PostaviPokupljeneKarte = (array,player) => {
+export const SetPickedUpCards = (array,player) => {
     return {
         type: 'PUT_CARDS',
         array,

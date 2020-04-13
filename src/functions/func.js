@@ -1,13 +1,13 @@
 export const isMoveValid = (selectedCards,playerCard)=>{
     let deskCards = makeArrOfObjWithIntValue([...selectedCards]);
-    let karta = makeObjWithIntValue(playerCard)
+    let player_card = makeObjWithIntValue(playerCard)
     let [a,b=0,c=0,d=0] = deskCards;
-    let ArrPokupljenihKarata = func(karta.value,a.value,b.value,c.value,d.value);
+    let ArrOfPickedCards = func(player_card.value,a.value,b.value,c.value,d.value);
     //console.log("resenje:",ArrPokupljenihKarata);
-    return ArrPokupljenihKarata;
+    return ArrOfPickedCards;
 }
 
-function func(karta,a=0,b=0,c=0,d=0){
+function func(playerCard,a=0,b=0,c=0,d=0){
     //console.log("karta",karta,"a=",a," b=",b," c=",c," d=",d)
     var suma = 0;
     var pomNiz = [];
@@ -23,7 +23,7 @@ function func(karta,a=0,b=0,c=0,d=0){
                 if (j) { suma = suma + b;  pomNiz.push(b); abcd.push("b")}
                 if (k) { suma = suma + c;  pomNiz.push(c); abcd.push("c")}
                 if (l) { suma = suma + d;  pomNiz.push(d); abcd.push("d")}
-                if (karta===suma) {
+                if (playerCard===suma) {
                     ind = true;
                     ukNiz.push(pomNiz);
                     abcdNiz.push(abcd);
