@@ -27,7 +27,7 @@ class Player extends Component {
         }
         this.props.addChosenPlayerCard(this.props.playerNumber, card);
         console.log("at the end selected DeskCards", this.props.selectedDeskCards)
-        //isMoveValid(this.props.selectedDeskCards, card);
+        isMoveValid(this.props.selectedDeskCards, card);
 
         
     }

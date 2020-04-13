@@ -51,7 +51,7 @@
 const removeCardFromDeskCards = (cards, maxCard)=>
     cards.filter(card=>card.code!==maxCard.code)
 
-const mmakeArrOfObjWithIntValue = (selectedDeskCards) =>{
+const makeArrOfObjWithIntValue = (selectedDeskCards) =>{
     let deskCards = selectedDeskCards.map(card=>makeObjWithIntValue(card));
     return deskCards;
 }

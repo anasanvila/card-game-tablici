@@ -31,7 +31,8 @@ const reducer = (store, action) => {
             newStore.ace = action.ace;
             break;
         case 'REPLACE_ACE_IN_CHOSEN_CARDS':
-            newStore.selectedDeskCards[action.index].value="ACE1";
+            console.log(newStore.selectedDeskCards);
+            if (newStore.selectedDeskCards) newStore.selectedDeskCards[action.index].value="ACE1";
             break;
         case 'ADD_ACE_NUM':
             console.log("ace num in reducer pre",newStore.aceNum);
