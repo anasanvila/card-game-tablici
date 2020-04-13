@@ -29,3 +29,8 @@ export const CardBlock = styled.div`
     justify-content:space-between;
     height:100%;
 `
+export const PokupljeneKarteIgraca = styled.div`
+    width:60%;
+    height:100px;
+    backgroundColor:white;;
+`

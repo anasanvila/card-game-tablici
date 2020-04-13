@@ -4,6 +4,7 @@ import {AddCards,AddDeckID, SetBlockedZone} from '../redux/action'
 import {connect} from 'react-redux'
 import Player from './player'
 import Desk from './desk'
+import PokupljeneKarte from '../components/pokupljeneKarte'
 import {TableZone} from '../styles/mainStyle'
 import {API_PATH, SHUFFLE_DECK_PATH} from '../const/constants'
 
@@ -49,19 +50,27 @@ class Main extends Component {
     }
 
     render(){
+        let pk1 = this.props.pokupljeneKartePrvogIgraca;
+        console.log("pk1",pk1);
+        let pk2 = this.props.pokupljeneKarteDrugogIgraca;
+        console.log("pk2",pk2)
         return (
             <TableZone>
                 <button onClick={ this.drawAllCards } > click </button>
+                {pk1?<PokupljeneKarte karte={pk1}/>:''}
                 <Player playerNumber={1} key="player1"/>
                 <Desk playerNumber={0}/>
                 <Player playerNumber={2} key="player2"/>
+                {pk2?<PokupljeneKarte karte={pk2}/>:''}
             </TableZone>
         );
     }
 }
 const mapStateToProps = (store) => {
     return {
-        deckID:store.deckID
+        deckID:store.deckID,
+        pokupljeneKartePrvogIgraca:store.pokupljeneKartePrvogIgraca,
+        pokupljeneKarteDrugogIgraca:store.pokupljeneKarteDrugogIgraca
     }
 }
 

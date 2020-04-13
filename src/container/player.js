@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
-import {AddCards,AddDeckID,AddChosenPlayerCard,ReplaceAceInChosenCards} from '../redux/action'
+import {AddCards,AddDeckID,AddChosenPlayerCard,ReplaceAceInChosenCards,PostaviPokupljeneKarte} from '../redux/action'
 import {connect} from 'react-redux'
 import Card from './card'
 import {PlayerZone, CardBlock } from '../styles/mainStyle'
 //import {isMoveValid} from '../functions/functions'
-import {isMoveValid} from '../functions/func'
+import {isMoveValid, mapped,makeObjWithIntValue} from '../functions/func'
 
 class Player extends Component {
     cardList(cards){
@@ -27,9 +27,14 @@ class Player extends Component {
         }
         this.props.addChosenPlayerCard(this.props.playerNumber, card);
         console.log("at the end selected DeskCards", this.props.selectedDeskCards)
-        isMoveValid(this.props.selectedDeskCards, card);
-
-        
+        let ArrOfCards = isMoveValid(this.props.selectedDeskCards, card);
+        console.log("resenje",ArrOfCards)
+        let Arr = mapped(ArrOfCards);
+        console.log("Arr",Arr);
+        let karta = makeObjWithIntValue(card)
+        Arr.push(karta.value)
+        if (Arr) this.props.postaviPokupljeneKarte(Arr,karta)
+        else console.log("nema resenja")
     }
 
     show(cards){
@@ -61,7 +66,8 @@ const mapDispatchToProps = (dispatch) => {
         addCards: (player, cards) => dispatch(AddCards(player, cards)),
         addDeckID: (id) => dispatch(AddDeckID(id)),
         addChosenPlayerCard: (player, card) => dispatch(AddChosenPlayerCard(player, card)),
-        replaceAceInChosenCards: (index)=>dispatch(ReplaceAceInChosenCards(index))
+        replaceAceInChosenCards: (index)=>dispatch(ReplaceAceInChosenCards(index)),
+        postaviPokupljeneKarte: (arr,player)=>dispatch(PostaviPokupljeneKarte(arr,player))
     }
 }
 

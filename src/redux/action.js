@@ -63,3 +63,11 @@ export const AddAceNum = (num) => {
         num
     }
 }
+
+export const PostaviPokupljeneKarte = (array,player) => {
+    return {
+        type: 'PUT_CARDS',
+        array,
+        player
+    }
+}

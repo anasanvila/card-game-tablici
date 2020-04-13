@@ -9,6 +9,8 @@ const getInitialState = () => {
      selectedPlayerCard:{},
      selectedPlayer:0,
      selectedDeskCards:[],
+     pokupljeneKartePrvogIgraca:[],
+     pokupljeneKarteDrugogIgraca:[],
      desk:[],
      ace:false,
      aceNum:0,

@@ -3,11 +3,12 @@ export const isMoveValid = (selectedCards,playerCard)=>{
     let karta = makeObjWithIntValue(playerCard)
     console.log("ismovevalid",deskCards)
     let [a,b=0,c=0,d=0] = deskCards;
-    console.log("resenje",func(karta.value,a.value,b.value,c.value,d.value));
-    
+    let ArrPokupljenihKarata = func(karta.value,a.value,b.value,c.value,d.value);
+    //console.log("resenje:",ArrPokupljenihKarata);
+    return ArrPokupljenihKarata;
 }
 
-function func(karta,a,b=0,c=0,d=0){
+function func(karta,a=0,b=0,c=0,d=0){
     console.log("karta",karta,"a=",a," b=",b," c=",c," d=",d)
     var suma = 0;
     var pomNiz = [];
@@ -39,8 +40,15 @@ function func(karta,a,b=0,c=0,d=0){
                 abcd = [];
               }
         if(ind==false)   return [];
-          else return [ukNiz,abcdNiz]
+          else return ukNiz
+    }
 
+  export  const mapped = (ArrOfCards)=> {
+        let Arr=[]
+        ArrOfCards.forEach(el=>{
+            el.forEach(e=>Arr.push(e))
+        }) 
+        return Arr;
     }
 
     const makeArrOfObjWithIntValue = (selectedDeskCards) =>{
@@ -48,7 +56,7 @@ function func(karta,a,b=0,c=0,d=0){
         return deskCards;
     }
     
-    const makeObjWithIntValue = (card)=>{
+    export const makeObjWithIntValue = (card)=>{
         switch (card.value) {
             case "KING": 
                 return obj(14,card.code, 1);

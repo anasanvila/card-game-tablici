@@ -40,6 +40,10 @@ const reducer = (store, action) => {
             newStore.aceNum=newStore.aceNum + action.num;
             console.log("ace num in reducer posle",newStore.aceNum);
             break;
+        case 'PUT_CARDS':
+            console.log("reducer, action.array",action.array)
+            if (action.player==1) newStore.pokupljeneKartePrvogIgraca = [ ...action.array]
+            if (action.player==2) newStore.pokupljeneKarteDrugogIgraca = [ ...action.array]
         default: return newStore;
     }
 
