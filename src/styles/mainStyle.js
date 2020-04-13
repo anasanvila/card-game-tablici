@@ -17,11 +17,23 @@ export const TableZone = styled.div`
 export const PlayerZone = styled.div`
     width:60vw;
     height:15vh;
+    @media(min-width:1200px and max-width:1500px){
+        width:50vw;
+    }
+    @media(min-width:1501px){
+        width:40vw;
+    }
 `
 export const DeskZone = styled.div`
     align-self:center;
-    width:50vw;
+    width:55vw;
     height:15vh;
+    @media(min-width:1200px and max-width: 1500px){
+        width:30vw;
+    }
+    @media(min-width:1501px){
+        width:25vw;
+    }
 `
 export const CardBlock = styled.div`
     display:flex;
@@ -37,8 +49,9 @@ export const PokupljeneKarteIgraca = styled.div`
 export const Box = styled.div`
     background-color:white;
     width:25px;
-    padding-left:7px;
+    padding-left:1px;
     border:1px solid green;
     color:black;
     display:inline-block;
+    text-align:center;
 `
