@@ -17,13 +17,11 @@ class Desk extends Component {
     cardList(cards){
         let cardImages = cards.map(card=>{
             let ace=false;
-            let aceisOne=false;
             if (card.value==="ACE") ace=true;
             return(<Card 
                 card={card} 
                 key={card.code} 
                 ace={ace}
-                aceisOne={aceisOne}
                 playerNumber={this.props.playerNumber} 
                 onClick={e=>this.handleClick(card)}
             />)}
@@ -59,7 +57,6 @@ const mapStateToProps = (store) => {
         desk:store.desk,
         blockedZone:store.blockedZone,
         selectedDeskCards:store.selectedDeskCards,
-        ace:store.ace,
         aceNum:store.aceNum
     }
 }

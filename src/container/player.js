@@ -52,7 +52,6 @@ const mapStateToProps = (store) => {
         player2cards:store.player2cards,
         selectedDeskCards:store.selectedDeskCards,
         selectedPlayerCard:store.selectedPlayerCard,
-        ace:store.ace,
         aceNum:store.aceNum
     }
 }
