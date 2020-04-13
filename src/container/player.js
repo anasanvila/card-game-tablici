@@ -3,7 +3,6 @@ import {AddCards,AddDeckID,AddChosenPlayerCard,ReplaceAceInChosenCards,PostaviPo
 import {connect} from 'react-redux'
 import Card from './card'
 import {PlayerZone, CardBlock } from '../styles/mainStyle'
-//import {isMoveValid} from '../functions/functions'
 import {isMoveValid, mapped,makeObjWithIntValue} from '../functions/func'
 
 class Player extends Component {
@@ -20,21 +19,18 @@ class Player extends Component {
     }
 
     handleClick = (card) => {
-        console.log("player card", card);
         for (let i=0; i<this.props.aceNum; i++){
-            let index = this.props.selectedDeskCards.findIndex(card=>card.value=="ACE") 
+            let index = this.props.selectedDeskCards.findIndex(card=>card.value==="ACE") 
             this.props.replaceAceInChosenCards(index);
         }
         this.props.addChosenPlayerCard(this.props.playerNumber, card);
-        console.log("at the end selected DeskCards", this.props.selectedDeskCards)
         let ArrOfCards = isMoveValid(this.props.selectedDeskCards, card);
-        console.log("resenje",ArrOfCards)
+        console.log("Resenja:",ArrOfCards)
         let Arr = mapped(ArrOfCards);
-        console.log("Arr",Arr);
         let karta = makeObjWithIntValue(card)
-        Arr.push(karta.value)
+        if (Arr.length>0) Arr.push(karta.value);
         if (Arr) this.props.postaviPokupljeneKarte(Arr,karta)
-        else console.log("nema resenja")
+        else console.log("nista od karata ne moze da se pokupi")
     }
 
     show(cards){

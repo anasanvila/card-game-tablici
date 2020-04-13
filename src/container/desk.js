@@ -32,13 +32,7 @@ class Desk extends Component {
     }
 
     handleClick = (card) => {
-        console.log("card", card);
-        console.log("ace==",this.props.ace)
-        console.log("aceNum=",this.props.aceNum)
-        
         this.props.addChosenDeskCard(card);
-        
-        console.log("deskCards",this.props.selectedDeskCards);
     }
 
     show(value){
@@ -46,7 +40,6 @@ class Desk extends Component {
     }
 
     render(){
-        //console.log("store.selected: ",this.props.selectedDeskCards)
         return(
             <DeskZone> { this.show(this.props.desk) } </DeskZone>
         )

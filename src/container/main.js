@@ -50,18 +50,16 @@ class Main extends Component {
     }
 
     render(){
-        let pk1 = this.props.pokupljeneKartePrvogIgraca;
-        console.log("pk1",pk1);
-        let pk2 = this.props.pokupljeneKarteDrugogIgraca;
-        console.log("pk2",pk2)
+        let pk1 = this.props.pokupljeneKartePrvogIgraca || '';
+        let pk2 = this.props.pokupljeneKarteDrugogIgraca||'';
         return (
             <TableZone>
                 <button onClick={ this.drawAllCards } > click </button>
-                {pk1?<PokupljeneKarte karte={pk1}/>:''}
+                <PokupljeneKarte karte={pk1}/>
                 <Player playerNumber={1} key="player1"/>
                 <Desk playerNumber={0}/>
                 <Player playerNumber={2} key="player2"/>
-                {pk2?<PokupljeneKarte karte={pk2}/>:''}
+                <PokupljeneKarte karte={pk2}/>
             </TableZone>
         );
     }

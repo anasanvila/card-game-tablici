@@ -21,7 +21,6 @@ class Card extends Component {
     }
 
     handleClick = () => {
-        console.log("selectedDeskCards",this.props.selectedDeskCards)
         if (this.props.playerNumber!==this.props.blockedZone) {
             const newMove = !this.state.move;
             this.setState({move: newMove});
@@ -29,9 +28,7 @@ class Card extends Component {
     }
 
     handleClick1 = () => {
-        console.log("kec je jedan");
         this.props.addAceNum(1);
-        console.log("selectedDeskCards",this.props.selectedDeskCards)
         if (this.props.playerNumber!==this.props.blockedZone) {
             const newMove = !this.state.move;
             this.setState({move: newMove});

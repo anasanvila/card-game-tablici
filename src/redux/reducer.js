@@ -31,20 +31,18 @@ const reducer = (store, action) => {
             newStore.ace = action.ace;
             break;
         case 'REPLACE_ACE_IN_CHOSEN_CARDS':
-            console.log(newStore.selectedDeskCards);
             if (newStore.selectedDeskCards) newStore.selectedDeskCards[action.index].value="ACE1";
             break;
         case 'ADD_ACE_NUM':
-            console.log("ace num in reducer pre",newStore.aceNum);
-            console.log("Action num= ",action.num)
             newStore.aceNum=newStore.aceNum + action.num;
-            console.log("ace num in reducer posle",newStore.aceNum);
             break;
         case 'PUT_CARDS':
-            console.log("reducer, action.array",action.array)
-            if (action.player==1) newStore.pokupljeneKartePrvogIgraca = [ ...action.array]
-            if (action.player==2) newStore.pokupljeneKarteDrugogIgraca = [ ...action.array]
-        default: return newStore;
+            console.log("Niz pokupljenih karata: ",action.array)
+            if (action.player===1) newStore.pokupljeneKartePrvogIgraca = [ ...action.array]
+            if (action.player===2) newStore.pokupljeneKarteDrugogIgraca = [ ...action.array]
+            break;
+        default:
+            return newStore;
     }
 
     return newStore;

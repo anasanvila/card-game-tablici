@@ -32,5 +32,5 @@ export const CardBlock = styled.div`
 export const PokupljeneKarteIgraca = styled.div`
     width:60%;
     height:100px;
-    backgroundColor:white;;
+    opacity:0.5;
 `
