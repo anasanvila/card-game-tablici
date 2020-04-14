@@ -1,7 +1,7 @@
 export const isMoveValid = (selectedCards,playerCard)=>{
     let deskCards = makeArrOfObjWithIntValue([...selectedCards]);
     let player_card = makeObjWithIntValue(playerCard)
-    let [a,b=0,c=0,d=0] = deskCards;
+    let [a=0,b=0,c=0,d=0] = deskCards;
     let ArrOfPickedCards = func(player_card.value,a.value,b.value,c.value,d.value);
     //console.log("resenje:",ArrPokupljenihKarata);
     return ArrOfPickedCards;

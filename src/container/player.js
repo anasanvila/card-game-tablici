@@ -2,8 +2,17 @@ import React, {Component} from 'react';
 import {AddCards,AddDeckID,AddChosenPlayerCard,ReplaceAceInChosenCards,SetPickedUpCards} from '../redux/action'
 import {connect} from 'react-redux'
 import Card from './card'
-import {PlayerZone, CardBlock } from '../styles/mainStyle'
-import {isMoveValid, mapped,makeObjWithIntValue} from '../functions/func'
+import styled from 'styled-components';
+import {PlayerZone } from '../styles/mainStyle'
+import {isMoveValid, mapped, makeObjWithIntValue} from '../functions/func'
+
+const CardBlock = styled.div`
+    display:flex;
+    flex-direction:row;
+    justify-content:space-between;
+    height:100%;
+    
+`
 
 class Player extends Component {
     cardList(cards){
@@ -25,7 +34,7 @@ class Player extends Component {
         }
         this.props.addChosenPlayerCard(this.props.playerNumber, card);
         let ArrOfCards = isMoveValid(this.props.selectedDeskCards, card);
-        console.log("Resenja:",ArrOfCards)
+        //console.log("Resenja:",ArrOfCards)
         let Arr = mapped(ArrOfCards);
         let karta = makeObjWithIntValue(card)
         if (Arr.length>0) Arr.push(karta.value);
@@ -38,6 +47,7 @@ class Player extends Component {
     }
 
     render(){
+        console.log("blockedZone",this.props.blockedZone, "playerNumber",this.props.playerNumber)
         let player = (this.props.playerNumber===1)?this.props.player1cards:this.props.player2cards
         return(
             <PlayerZone> { this.show(player) } </PlayerZone>
@@ -53,7 +63,8 @@ const mapStateToProps = (store) => {
         selectedDeskCards:store.selectedDeskCards,
         selectedPlayerCard:store.selectedPlayerCard,
         ace:store.ace,
-        aceNum:store.aceNum
+        aceNum:store.aceNum,
+        blockedZone:store.blockedZone
     }
 }
 

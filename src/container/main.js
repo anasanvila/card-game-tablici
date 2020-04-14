@@ -55,11 +55,11 @@ class Main extends Component {
         return (
             <TableZone>
                 <button onClick={ this.drawAllCards } > click </button>
-                <PickedUpCards karte={pk1}/>
+                <PickedUpCards cards={pk1} playerNumber={1}/>
                 <Player playerNumber={1} key="player1"/>
                 <Desk playerNumber={0}/>
                 <Player playerNumber={2} key="player2"/>
-                <PickedUpCards karte={pk2}/>
+                <PickedUpCards cards={pk2} playerNumber={2}/>
             </TableZone>
         );
     }

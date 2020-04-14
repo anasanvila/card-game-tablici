@@ -34,7 +34,6 @@ class Card extends Component {
             this.setState({move: newMove});
         }
         this.props.addAceAsOne(true);
-        
     }
 
     render(){
@@ -51,7 +50,7 @@ class Card extends Component {
                 </div>
             </CardStyle>
         )
-        else return (<CardStyle onClick={this.props.onClick} move={this.state.move&&this.props.playerNumber===0}>
+        else return (<CardStyle onClick={this.props.onClick} move={this.state.move}>
                 <img src={this.props.card.image} onClick={this.handleClick} key={this.props.card.code} height="100%" alt={this.props.card.code}/>
             </CardStyle>
         )
