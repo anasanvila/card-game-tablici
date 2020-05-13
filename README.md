@@ -1,3 +1,6 @@
+WORK IN PROGRESS
+
+
 Card game tablici
 _________________
 napomena: Ako igrac ima kartu "A" tumaceno je da je u pitanju "11" dok 
